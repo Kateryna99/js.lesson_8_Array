@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    'use strict'
+    //Задача 4. Дано послідовність номерів автомобілів. Підрахувати кількість номерів, які :
+    //	починаються на букву «А»;
+    //перша і остання літери співпадають;
+    //складаються з більше ніш 5 символів;
+
+    const carNumberArray = ['AA2342AA', 'KB23KB', 'AE4AE', 'AM234234AN', 'KA324AK', 'KH34KH', 'KB1244KK', 'OA5O', 'OB23444OO', 'OE12332OE', 'MA3M']
+
+    function carSymbolsArray(carNumberArray) {
+        let arr = []
+        for (let i = 0; i < carNumberArray.length; i++) {
+            const randomCarSymbol = Math.floor(Math.random() * carNumberArray.length)
+            arr.push(carNumberArray[randomCarSymbol])
+        }
+        return arr
+    }
+
+    function getLetterACarSymbolsStartNumber(carSymbols) {
+        let startACounter = 0
+        for (let i = 0; i < carSymbols.length; i++) {
+            if (carSymbols[i][0] === 'A')
+                startACounter++
+        }
+        return startACounter
+    }
+
+    function getSameFirstLastCarSymbolNumber(carSymbols) {
+        let sameFirstLastLetterCounter = 0
+        for (let i = 0; i < carSymbols.length; i++) {
+            if (carSymbols[i][0] === carSymbols[i][carSymbols[i].length - 1])
+                sameFirstLastLetterCounter++
+        }
+        return sameFirstLastLetterCounter
+    }
+
+    function getCarNumberMoreThan5Symbols(carSymbols) {
+        let moreThan5SymbolsCounter = 0
+        for (let i = 0; i < carSymbols.length; i++) {
+            if (carSymbols[i].length > 5)
+                moreThan5SymbolsCounter++
+        }
+        return moreThan5SymbolsCounter
+    }
+
+    const carSymbols = carSymbolsArray(carNumberArray)
+    console.log(carSymbols)
+    document.write(`Here are all license plates ${carSymbols} <br> License plates that start with letter 'A': ${getLetterACarSymbolsStartNumber(carSymbols)} <br> License plates that start and end with the same letter ${getSameFirstLastCarSymbolNumber(carSymbols)} <br> License plates that have more than 5 symbols ${getCarNumberMoreThan5Symbols(carSymbols)}`)
+
+
+</script>
+</body>
+</html>

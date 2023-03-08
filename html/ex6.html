@@ -1,0 +1,31 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //Задача 6. Дано послідовність цін товарів та назв (у окремих масивах). Вивести на екран ті, які може собі дозволити користувач (кількість грошей задається).
+    'use strict'
+
+    function getGoodPrice(userMoney, goodArray, goodPriceArray) {
+        let result = ``
+        for (let i = 0; i < goodPriceArray.length; i++) {
+            if (userMoney >= goodPriceArray[i])
+                result += `${goodArray[i]}, `
+        }
+        return result
+    }
+
+    const goodArray = ['cheese', 'milk', 'flour', 'bread', 'tomato', 'cucumber', 'pork', 'chicken']
+    const goodPriceArray = [150, 35, 67, 15, 20, 45, 170, 120]
+    const userMoney = parseInt(prompt('Enter your amount of money'))
+    document.write(`In our shop we have ${goodArray} <br> You have ${userMoney} so you can buy ${getGoodPrice(userMoney,goodArray,goodPriceArray)}`)
+
+</script>
+</body>
+</html>

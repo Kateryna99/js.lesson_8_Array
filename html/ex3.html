@@ -1,0 +1,42 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //Задача 3. Дано масив імен учнів. З’ясувати скільки разів зустрічається ім’я «Іван»
+ 'use strict'
+
+     const pupilsNameArr = ['Ivan', 'Kate', 'Maria', 'Petro', 'Ivan', 'Oskar', 'Ivan', 'Mike', 'Ivan', 'Maria', 'Petro', 'Ivan', 'Ivan', 'Petro', 'Ivan', 'Maria', 'Mike', 'Ivan']
+
+    function getRandomNameArray(pupilsNameArr){
+     let arr = []
+       for(let name=0; name<pupilsNameArr.length; name++){
+           const pupilName = Math.floor(Math.random()*pupilsNameArr.length)
+           arr.push(pupilsNameArr[pupilName])
+       }
+       return arr
+    }
+
+
+    function GetIvanNumber(randomNames) {
+       let ivanCounter = 0
+        for(let i=0; i<randomNames.length; i++){
+            if(randomNames[i]==='Ivan')
+                ivanCounter++
+        }
+        return ivanCounter
+    }
+
+    const randomNames= getRandomNameArray(pupilsNameArr)
+
+    document.write(`Here is the list of all pupils at class: ${randomNames} <br> There are ${GetIvanNumber(randomNames)} Ivan in the class`)
+
+</script>
+</body>
+</html>

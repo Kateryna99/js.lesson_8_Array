@@ -1,0 +1,79 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //Задача 2. Дано масив, який зберігає кількість відвідувачів магазину протягом тижня(7). Вивести на екран:
+    //номери днів, протягом яких кількість відвідувачів була меншою за 20;
+    //номери днів, коли кількість відвідувачів була мінімальною;
+    //номери днів, коли кількість відвідувачів була max;
+    //загальну кількість клієнтів у робочі дні та окремо загальну кількість днів на вихідних.
+
+    // ТРІШКИ НЕ ЗРОЗУМІЛА ЯК ВИВЕСТИ САМЕ ТІ ДНІ, ДЕ БУЛО МЕНШУ 20 ЛЮДЕЙ
+    'use strict'
+
+    function customerNumberArray() {
+        let arr = []
+        let minNum = 1,
+            maxNum = 100;
+        for (let day = 1; day <= 7; day++) {
+            const costumerPerDay = minNum + Math.floor(Math.random() * (maxNum - minNum +1))
+            arr.push(costumerPerDay)
+        }
+        return arr
+    }
+    function getDaysLess20Costumer(customNumArray){
+        let costumerLess20 = 0;
+         for(let i=0; i < customNumArray.length; i++ ){
+             if (customNumArray[i] < 20)
+                 costumerLess20++
+         }
+         return costumerLess20
+    }
+
+    function getMinCustomerDay(customNumArray){
+        let minCustomDay = 1
+        let minCustomNum = customNumArray[0]
+        for(let i=0; i < customNumArray.length ; i++){
+            if(customNumArray[i]<minCustomNum){
+                minCustomDay = i + 1
+                minCustomNum = customNumArray[i]
+            }
+        }
+        return minCustomDay
+    }
+
+    function getMaxCustomerDay(customNumArray){
+        let maxCustomDay = 1
+        let maxCustomNum = customNumArray[0]
+        for(let i=0; i < customNumArray.length ; i++){
+            if(customNumArray[i]>maxCustomNum){
+                maxCustomDay = i + 1
+                maxCustomNum = customNumArray[i]
+            }
+        }
+        return maxCustomDay
+    }
+
+    function getCostumerNumberForWorkDayWeekend(customNumArray) {
+        let customWorkDaySum = 0
+        let customWeekendSum = 0
+        for(let i=0; i<customNumArray.length;i++){
+            if(i<5)
+                customWorkDaySum+= customNumArray[i]
+                else customWeekendSum += customNumArray[i]
+        }
+        return `There were ${customWorkDaySum} during work days and ${customWeekendSum} during weekend`
+    }
+
+    const customNumArray = customerNumberArray()
+    document.write(`That week there were ${customNumArray} customers.<br> There were ${getDaysLess20Costumer(customNumArray)} day(s) with than less 20 costumers.<br> Least amount of custumers came on the ${getMinCustomerDay(customNumArray)}th day. <br> Most amount of costumers came on the ${getMaxCustomerDay(customNumArray)}th day<br> ${getCostumerNumberForWorkDayWeekend(customNumArray)} `)
+</script>
+</body>
+</html>

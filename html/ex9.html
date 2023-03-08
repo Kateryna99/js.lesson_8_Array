@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="../css/style.css">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //Задача 9. Морський бій. Користувач вводить кількість клітинок одновимірного масиву та кількість одиночних кораблів.
+    // Комп’ютер довільно розміщує ці одиночні кораблі у масиві по один у клітинці (якщо у клітинці 0, то клітинка пуста, якщо 1 – то це означає, що там є корабель.
+    // Користувач вводить номер клітинки, куди стріляє. Гра продовжується до тих пір, поки не будуть потоплені усі кораблі.
+    'use strict'
+
+
+    function createFieldArray(userFieldNumber) {
+        let arr = []
+        for (let i = 0; i < userFieldNumber; i++) {
+            const fieldItem = 0
+            arr.push(fieldItem)
+        }
+        return arr
+    }
+
+    function createShipPosition(userShipNumber, battleField,userField) {
+
+        for (let i = 0; i < userShipNumber; i++) {
+            const shipPosition = Math.floor(Math.random() * userField)
+            if (battleField[shipPosition] !== 1) battleField[shipPosition] = 1
+            else i--
+        }
+        return battleField
+    }
+
+    function getFinalGameResult(battleField,userShipNumber) {
+        for (let i = 0; ; i++) {
+             const userTry =parseInt(prompt('Guess ship position'))
+            if(battleField[userTry-1]===1) {
+                alert('You hit one ship')
+                battleField[userTry-1]=0
+                userShipNumber--
+            }
+            if(userShipNumber===0) break
+        }
+        return 'You win'
+    }
+
+   const userField = parseInt(prompt('Enter your battle field size'))
+    const userShipNumber = parseInt(prompt('Enter your ship(s) amount'))
+    const battleField = createFieldArray(userField)
+    const shipPosition = createShipPosition(userShipNumber,battleField,userField)
+    alert(getFinalGameResult(shipPosition,userShipNumber))
+
+
+
+</script>
+</body>
+</html>

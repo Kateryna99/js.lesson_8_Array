@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //Задача 5. Дано послідовність оцінок учня. Підрахувати кількість:
+    //1)	двійок
+    //2)	кількість хороших оцінок (добре, відмінно);
+    //3)	кількість оцінок, які нижче середнього.
+
+    'use strict'
+   function pupilGradeArray(subjectNum) {
+       let arr = []
+       for(let i=0; i<subjectNum;i++){
+           const pupilGrades = Math.floor(Math.random()*12) +1
+           arr.push(pupilGrades)
+       }
+       return arr
+   }
+
+   function get2GradeNumber(pupilGrades) {
+       let grade2Counter = 0
+       for (let i = 0; i<pupilGrades.length; i++){
+           if(pupilGrades[i]===2)
+               grade2Counter++
+       }
+       return grade2Counter
+   }
+
+   function getGoodGradeNumber(pupilGrades) {
+       let goodGradeCounter = 0
+       for(let i = 0; i<pupilGrades.length; i++){
+           if(pupilGrades[i]>= 8)
+               goodGradeCounter++
+       }
+       return goodGradeCounter
+   }
+
+   function getBelowThanAverageGradeNumber(pupilGrades) {
+       let belowThanAverageGradeCounter = 0
+       for(let i = 0; i<pupilGrades.length; i++){
+           if(pupilGrades[i]<8)
+               belowThanAverageGradeCounter++
+       }
+       return belowThanAverageGradeCounter
+   }
+
+    const subjectNumber = parseInt(prompt('Enter how many subject your pupil had','1'))
+    const pupilGrades = pupilGradeArray(subjectNumber)
+
+    document.write(`You entered ${subjectNumber} subjects <br> Pupil's grades are ${pupilGrades} <br> Pupil has ${get2GradeNumber(pupilGrades)} 2 grades <br> Pupil has ${getGoodGradeNumber(pupilGrades)} good and higher grades <br> Pupil has ${getBelowThanAverageGradeNumber(pupilGrades)} grade(s) that is(are) below average grade `)
+
+
+
+</script>
+</body>
+</html>
